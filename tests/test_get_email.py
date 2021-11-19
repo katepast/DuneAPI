@@ -9,7 +9,7 @@ from ValidatorPizzaAPI.helpers.assert_response import *
 
 @pytest.mark.debug
 def test_get_response_by_valid_email():
-    """Get response from valid email"""
+    """Get response with valid email"""
 
     email_value = VALID_EMAIL.get('email')
     response = get(url=config.valid_email.format(email_value))
@@ -22,12 +22,12 @@ def test_get_response_by_valid_email():
     Verify.equals(email_value, json_resp['email'], f"User '{email_value}' is not created")
 
     logger.info(f"Verify that full response '{VALID_EMAIL}' corresponds to received '{json_resp}'")
-    Verify.equals(VALID_EMAIL, json_resp, f"Data does not correspond to '{VALID_EMAIL}'")
+    Verify.equals(VALID_EMAIL, json_resp, f"Response does not correspond to '{VALID_EMAIL}'")
 
 
 @pytest.mark.debug
 def test_get_response_by_invalid_email():
-    """Get response from invalid email"""
+    """Get response with invalid email"""
 
     response = get(url=config.invalid_email_url)
     json_resp = response.json()
@@ -41,7 +41,7 @@ def test_get_response_by_invalid_email():
 
 @pytest.mark.debug
 def test_get_response_by_valid_domain():
-    """Get response from valid domain email"""
+    """Get response with valid domain"""
 
     domain_value = VALID_EMAIL.get('domain')
     response = get(url=config.valid_domain_url.format(domain_value))
@@ -59,7 +59,7 @@ def test_get_response_by_valid_domain():
 
 @pytest.mark.debug
 def test_get_response_by_invalid_domain():
-    """Get response from invalid domain"""
+    """Get response with invalid domain"""
 
     response = get(url=config.invalid_domain_url)
     json_resp = response.json()
@@ -68,4 +68,4 @@ def test_get_response_by_invalid_domain():
     Verify.equals(400, response.status_code, "Status code does not equal to 400 for GET request with invalid domain")
 
     logger.info(f"Verify that response '{INVALID_DOMAIN_RESPONSE}' corresponds to received '{json_resp}'")
-    Verify.equals(INVALID_DOMAIN_RESPONSE, json_resp, f"Data does not correspond to '{INVALID_DOMAIN_RESPONSE}'")
+    Verify.equals(INVALID_DOMAIN_RESPONSE, json_resp, f"Response does not correspond to '{INVALID_DOMAIN_RESPONSE}'")
