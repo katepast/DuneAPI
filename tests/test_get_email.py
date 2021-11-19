@@ -1,10 +1,10 @@
 import pytest
 
-from ValidatorAPI import config
-from ValidatorAPI.helpers.http_methods import get
-from ValidatorAPI.helpers.logging import logger
-from ValidatorAPI.helpers.verify import Verify
-from ValidatorAPI.helpers.assert_response import *
+from ValidatorPizzaAPI import config
+from ValidatorPizzaAPI.helpers.http_methods import get
+from ValidatorPizzaAPI.helpers.logging import logger
+from ValidatorPizzaAPI.helpers.verify import Verify
+from ValidatorPizzaAPI.helpers.assert_response import *
 
 
 @pytest.mark.debug

@@ -3,4 +3,4 @@ to the server Link of tested API platform: https://www.validator.pizza/#document
 
 Usage: Python version 3.7
 install requirements.txt via command: pip install requirements.txt
-create debug mark to execute all test cases via Preferences in run configuration with custom target within Pytest configuration: -s -m debug
+pytest -s -v to execute all test
