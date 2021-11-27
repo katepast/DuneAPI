@@ -15,7 +15,6 @@ class ServiceAPIValidatorPizza(ABC):
     def _get(self, route: UserRoutes, **kwargs):
         """Return GET request"""
         logging.debug("Return GET request")
-        print("route.value is", route.value)
         return self._session.get(self.url + route.value, **kwargs)
 
     def _post(self, route: UserRoutes, body: dict, **kwargs):
