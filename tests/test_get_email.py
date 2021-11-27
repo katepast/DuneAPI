@@ -1,8 +1,6 @@
 import pytest
-
-from ValidatorPizzaAPI import config
-from ValidatorPizzaAPI.helpers.http_methods import get
 from ValidatorPizzaAPI.helpers.logging import logger
+from ValidatorPizzaAPI.helpers.user_service_api import UserServiceAPI
 from ValidatorPizzaAPI.helpers.verify import Verify
 from ValidatorPizzaAPI.helpers.assert_response import *
 
@@ -12,7 +10,7 @@ def test_get_response_by_valid_email():
     """Get response with valid email"""
 
     email_value = VALID_EMAIL.get('email')
-    response = get(url=config.valid_email.format(email_value))
+    response = UserServiceAPI().get_response_by_valid_email()
     json_resp = response.json()
 
     logger.info("Verify that status code returns 200 for GET request with valid email")
@@ -29,7 +27,7 @@ def test_get_response_by_valid_email():
 def test_get_response_by_invalid_email():
     """Get response with invalid email"""
 
-    response = get(url=config.invalid_email_url)
+    response = UserServiceAPI().get_response_by_invalid_email()
     json_resp = response.json()
 
     logger.info("Verify that status code returns 400 for GET request with invalid email")
@@ -44,7 +42,7 @@ def test_get_response_by_valid_domain():
     """Get response with valid domain"""
 
     domain_value = VALID_EMAIL.get('domain')
-    response = get(url=config.valid_domain_url.format(domain_value))
+    response = UserServiceAPI().get_response_by_valid_domain()
     json_resp = response.json()
 
     logger.info(f"Verify that status code returns 200 for GET request of specified domain value '{domain_value}'")
@@ -61,7 +59,7 @@ def test_get_response_by_valid_domain():
 def test_get_response_by_invalid_domain():
     """Get response with invalid domain"""
 
-    response = get(url=config.invalid_domain_url)
+    response = UserServiceAPI().get_response_by_invalid_domain()
     json_resp = response.json()
 
     logger.info("Verify that status code returns 400 for GET request with invalid domain")
